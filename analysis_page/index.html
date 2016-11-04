@@ -1,0 +1,869 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+
+<head>
+    <title></title>
+    <meta name="description" content="頁遊找出你喜愛的粉專" />
+    <meta name="keywords" content="Page,Traveler,facebook" />
+    <meta property="og:title" content="一起來頁遊☺" />
+    <meta property="og:description" content="頁遊找出你喜愛的粉專" />
+    <meta property="og:image" content="http://pagetraveler.mgt.ncu.edu.tw/analysis_page/images/share.png" />
+    <meta property="og:url" content="http://pagetraveler.mgt.ncu.edu.tw/analysis_page/" />
+    <meta property="fb:app_id" content="553315818188739" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+</head>
+<style>
+    a {
+        color: #fff;
+        text-decoration: none;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+    
+    span.reference {
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    
+    span.reference a {
+        color: #fff;
+        text-shadow: 1px 1px 1px #000;
+        padding-right: 20px;
+    }
+    
+    span.reference a:hover {
+        color: #ddd;
+        text-decoration: none;
+    }
+
+</style>
+
+<body onload="setInterval('changeAngle()',50)">
+
+    <!------------------------------------page0  首頁------------------------------------->
+
+    <div class="section page0" id="section0">
+        <div class="nav" id="">
+            <br><br>
+
+            <img id="planet" src="images/planet.png" weight="650" height="650">
+            <img id="rocket" src="images/rocket.png">
+
+            <br><br><br><br>
+            <h1>直覺測驗 x 分析興趣粉專領域</h1>
+            <br><br><br><br>
+            <h2>當FaceBook成為生活一大部分</h2>
+            <h3>要怎麼在眾多的粉絲專頁中，找到自己感興趣的那一類資訊?</h3>
+            <br><br>
+            <h4><img id="map" src="images/map.png" weight="40" height="40"> 根據直覺，選擇有興趣的圖片</h4>
+            <img id="next" src="images/next.png" href="#section1" weight="150" height="150">
+        </div>
+
+    </div>
+
+    <!------------------------------------page1  夢中角色------------------------------------->
+
+    <div class="section page1" id="section1">
+        <p>
+            <br><br> 此刻正熟睡的你，你正夢到自己是個不同身分的人，你覺得你是?
+        </p>
+        <div class="Iam">
+            <input id="Iam_1" type="radio" name="Iamwho" value="Iam_1" />
+            <label class="Iamtype1 Iam_1" for="Iam_1"></label>
+
+            <input id="Iam_2" type="radio" name="Iamwho" value="Iam_2" />
+            <label class="Iamtype2 Iam_2" for="Iam_2"></label>
+
+            <input id="Iam_3" type="radio" name="Iamwho" value="Iam_3" />
+            <label class="Iamtype3 Iam_3" for="Iam_3"></label>
+
+            <input id="Iam_4" type="radio" name="Iamwho" value="Iam_4" />
+            <label class="Iamtype4 Iam_4" for="Iam_4"></label>
+
+            <input id="Iam_5" type="radio" name="Iamwho" value="Iam_5" />
+            <label class="Iamtype5 Iam_5" for="Iam_5"></label>
+
+
+            <div class="nav">
+                <img id="next1" src="images/next.png" href="#section2" weight="150" height="150" onclick="selectIam(),Count()">
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!------------------------------------page2  窗戶------------------------------------->
+
+    <div class="section page2" id="section2">
+        <p>
+            <br><br> 早晨的陽光透過窗戶亮醒了你，你推開窗戶看看外頭，請問看到的景象是?
+        </p>
+        <div class="window">
+            <input id="window_1" type="radio" name="windows" value="window_1" />
+            <label class="windowtype1 window_1" for="window_1"></label>
+
+            <input id="window_2" type="radio" name="windows" value="window_2" />
+            <label class="windowtype2 window_2" for="window_2"></label>
+
+            <input id="window_3" type="radio" name="windows" value="window_3" />
+            <label class="windowtype3 window_3" for="window_3"></label>
+
+            <input id="window_4" type="radio" name="windows" value="window_4" />
+            <label class="windowtype4 window_4" for="window_4"></label>
+
+            <input id="window_5" type="radio" name="windows" value="window_5" />
+            <label class="windowtype5 window_5" for="window_5"></label>
+
+            <div class="nav">
+                <img id="next2" src="images/next.png" href="#section3" weight="150" height="150" onclick="selectwindow(),Count()">
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!------------------------------------page3  電視------------------------------------->
+
+    <div class="section page3" id="section3">
+        <p>
+            <br><br> 走入客廳，打開電視，吸引你的節目是?
+        </p>
+
+        <div class="TV">
+            <img class="TVcase" src="images/Q3/TVcase.png" width="550" height="350">
+            <input id="TV_1" type="radio" name="TVprogram" value="TV_1" />
+            <label class="TVtype1 TV_1" for="TV_1"></label>
+
+            <input id="TV_2" type="radio" name="TVprogram" value="TV_2" />
+            <label class="TVtype2 TV_2" for="TV_2"></label>
+
+            <input id="TV_3" type="radio" name="TVprogram" value="TV_3" />
+            <label class="TVtype3 TV_3" for="TV_3"></label>
+
+            <input id="TV_4" type="radio" name="TVprogram" value="TV_4" />
+            <label class="TVtype4 TV_4" for="TV_4"></label>
+
+            <input id="TV_5" type="radio" name="TVprogram" value="TV_5" />
+            <label class="TVtype5 TV_5" for="TV_5"></label>
+
+            <div class="nav">
+                <img id="next3" src="images/next.png" href="#section4" weight="150" height="150" onclick="selectTV(),Count()">
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <!------------------------------------page4  時鐘------------------------------------->
+
+    <div class="section page4" id="section4">
+        <p>
+            <br><br> 抬頭看了個時間，不同色彩的指針，你的目光最先注視?
+        </p>
+
+        <div class="clock">
+
+            <input id="clock_1" type="radio" name="clockprogram" value="clock_1" />
+            <label class="clocktype1 clock_1" for="clock_1"></label>
+
+            <input id="clock_2" type="radio" name="clockprogram" value="clock_2" />
+            <label class="clocktype2 clock_2" for="clock_2"></label>
+
+            <input id="clock_3" type="radio" name="clockprogram" value="clock_3" />
+            <label class="clocktype3 clock_3" for="clock_3"></label>
+
+            <input id="clock_4" type="radio" name="clockprogram" value="clock_4" />
+            <label class="clocktype4 clock_4" for="clock_4"></label>
+
+            <input id="clock_5" type="radio" name="clockprogram" value="clock_5" />
+            <label class="clocktype5 clock_5" for="clock_5"></label>
+
+            <div class="nav">
+                <img id="next4" src="images/next.png" href="#section5" weight="150" height="150" onclick="selectclock(),Count()">
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <!------------------------------------page5   計畫表------------------------------------->
+    <div class="section page5" id="section5">
+        <p>
+            <br><br> 安排好今日的計畫，準備好了就出發吧(將想要的事項拉入格子內)
+        </p>
+        <div style="display: flex;">
+            <div class="diary">
+                <nav style="width:5%;"></nav>
+                <nav style="width:30%;">
+                    <div id="place1" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img1" src="images/Q5/dia_1.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place2" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img2" src="images/Q5/dia_2.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place3" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img3" src="images/Q5/dia_3.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place4" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img4" src="images/Q5/dia_4.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place5" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img5" src="images/Q5/dia_5.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place6" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img6" src="images/Q5/dia_6.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place7" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img7" src="images/Q5/dia_7.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place8" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img8" src="images/Q5/dia_8.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                </nav>
+            </div>
+
+            <div class="diary">
+                <article style="width:30%; margin-top:100px;">
+                    <div>
+                        <img id="Imgdiary" src="images/Q5/diary_day.png" weight="550" height="550">
+                    </div>
+                    <div id="Box1" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+                    <div id="Box2" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+                    <div id="Box3" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+                    <div id="Box4" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+                    <div style="clear:both;"></div>
+                </article>
+            </div>
+
+            <div class="diary">
+                <nav style="width:30%;">
+
+                    <div id="place9" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img9" src="images/Q5/dia_9.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place10" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img10" src="images/Q5/dia_10.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place11" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img11" src="images/Q5/dia_11.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place12" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img12" src="images/Q5/dia_12.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place13" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img13" src="images/Q5/dia_13.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place14" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img14" src="images/Q5/dia_14.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                    <div id="place15" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+                        <img id="Img15" src="images/Q5/dia_15.png" draggable="true" ondragstart="Drag(event)">
+                    </div>
+                </nav>
+                <nav style="width:5%;"></nav>
+
+
+            </div>
+        </div>
+        <!----<div style="display: flex;">----------->
+        <div class="nav">
+            <img id="next5" src="images/next.png" href="#section6" weight="150" height="150" onclick="selectplan(),Count()">
+        </div>
+
+
+
+    </div>
+
+    <!------------------------------------page6   鞋櫃------------------------------------->
+    <div class="section page6" id="section6">
+        <p>
+            <br><br> 出門前，再檢查一下自己該帶甚麼物品吧
+        </p>
+
+        <div class="carbin">
+            <img id="carbin_back" src="images/Q6/carbin_back.png" weight="540" height="540">
+            <input id="carbin_1" type="radio" name="carbinprogram" value="carbin_1" />
+            <label class="carbintype1 carbin_1" for="carbin_1"></label>
+
+            <input id="carbin_2" type="radio" name="carbinprogram" value="carbin_2" />
+            <label class="carbintype2 carbin_2" for="carbin_2"></label>
+
+            <input id="carbin_3" type="radio" name="carbinprogram" value="carbin_3" />
+            <label class="carbintype3 carbin_3" for="carbin_3"></label>
+
+            <input id="carbin_4" type="radio" name="carbinprogram" value="carbin_4" />
+            <label class="carbintype4 carbin_4" for="carbin_4"></label>
+
+            <input id="carbin_5" type="radio" name="carbinprogram" value="carbin_5" />
+            <label class="carbintype5 carbin_5" for="carbin_5"></label>
+
+            <div class="nav">
+                <img id="next6" src="images/next.png" href="#section7" weight="150" height="150" onclick="selectcarbin(),Count()">
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!------------------------------------page7   結果------------------------------------->
+    <div class="section page0" id="section7">
+
+
+        <p>
+            <br><br> 根據你的回答，分析你對領域的感興趣程度，呈現如下:
+        </p>
+        <br><br><br>
+        <div id="canvas">
+            <div class="circle" id="circles-1"></div>
+            <div class="circle" id="circles-2"></div>
+            <div class="circle" id="circles-3"></div>
+            <div class="circle" id="circles-4"></div>
+            <div class="circle" id="circles-5"></div>
+        </div>
+        <div>
+            <p>公眾人物&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp娛樂&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp品牌商品&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp地點&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp公司組織</p>
+        </div>
+        <br><br>
+
+        <div>
+            <div id="canvas">
+                <a href="../home.html"><img id="home" src="images/home.png" weight="150" height="150"></a>
+                <a href="#" id="button_test"><img id="re" src="images/re.png" onclick="website()" weight="150" height="150"></a>
+                <a id="shareBtn"><img id="sh" src="images/share_pic.png" weight="150" height="150"></a>
+
+            </div>
+
+            <!------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------->
+            <!------------------------------------------------------------------------------------->
+            <script src="circles.min.js"></script>
+            <script>
+                var total_public_fblikes = 0;
+                var total_company_fblikes = 0;
+                var total_entertainment_fblikes = 0;
+                var total_product_fblikes = 0;
+                var total_loc_fblikes = 0;
+                var total_fblikes = 0;
+                var company_fblikes = 0;
+                var entertainment_fblikes = 0;
+                var product_fblikes = 0;
+                var loc_fblikes = 0;
+                var public_fblikes = 0;
+                var nocate = 0;
+
+                function statusChangeCallback(response) {
+                    if (response.status === 'connected') {
+                        // Logged into your app and Facebook.
+                        count_facebookid();
+                    }
+                }
+
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId: '553315818188739',
+                        cookie: true, // enable cookies to allow the server to access 
+                        // the session
+                        xfbml: true, // parse social plugins on this page
+                        version: 'v2.7' // use graph api version 2.5
+                    });
+
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                    });
+
+                };
+
+                // Load the SDK asynchronously
+                (function(d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+                function count_facebookid() {
+                    FB.api('/me', 'GET', {
+                            "fields": "likes.limit(9999){category}",
+                            "locale": "zh_TW"
+                        },
+                        function(response) {
+                            total_fblikes = response.likes.data.length;
+                            for (var i = 0; i < response.likes.data.length; i++) {
+                                if (response.likes.data[i].category == '工業公司' || response.likes.data[i].category == '礦業公司' || response.likes.data[i].category == '農業' || response.likes.data[i].category == '能源公司' || response.likes.data[i].category == '航太科技公司' || response.likes.data[i].category == '生物科技公司' || response.likes.data[i].category == '保險公司' || response.likes.data[i].category == '公司' || response.likes.data[i].category == '小型企業' || response.likes.data[i].category == '工程/建築' || response.likes.data[i].category == '金融公司' || response.likes.data[i].category == '電信公司' || response.likes.data[i].category == '媒體／新聞機構' || response.likes.data[i].category == '法律' || response.likes.data[i].category == '農業公司' || response.likes.data[i].category == '零售商' || response.likes.data[i].category == '電腦公司' || response.likes.data[i].category == '網路公司' || response.likes.data[i].category == '醫療產業公司' || response.likes.data[i].category == '貨物和貨運公司' || response.likes.data[i].category == '旅遊公司' || response.likes.data[i].category == '食品與飲料公司' || response.likes.data[i].category == '律師事務所' || response.likes.data[i].category == '科學與工程' || response.likes.data[i].category == '化工公司' || response.likes.data[i].category == '汽車公司' || response.likes.data[i].category == '戶外及運動用品公司' || response.likes.data[i].category == '不動產' || response.likes.data[i].category == '海洋' || response.likes.data[i].category == '航空' || response.likes.data[i].category == '商業' || response.likes.data[i].category == '設計' || response.likes.data[i].category == '時尚' || response.likes.data[i].category == '服飾(品牌)' || response.likes.data[i].category == '品牌' || response.likes.data[i].category == '大學' || response.likes.data[i].category == '中學' || response.likes.data[i].category == '幼稚園' || response.likes.data[i].category == '國小' || response.likes.data[i].category == '教育' || response.likes.data[i].category == '學校' || response.likes.data[i].category == '政治組織' || response.likes.data[i].category == '公共服務與政府' || response.likes.data[i].category == '政府機關' || response.likes.data[i].category == '政黨' || response.likes.data[i].category == '社區與政府' || response.likes.data[i].category == '醫療與保健' || response.likes.data[i].category == '醫院／診所' || response.likes.data[i].category == '健康/美容' || response.likes.data[i].category == '健康/醫療/製藥' || response.likes.data[i].category == '社群' || response.likes.data[i].category == '非政府組織 （NGO）' || response.likes.data[i].category == '組織' || response.likes.data[i].category == '非營利組織' || response.likes.data[i].category == '社區組織' || response.likes.data[i].category == '宗教組織' || response.likes.data[i].category == '社區服務' || response.likes.data[i].category == '俱樂部' || response.likes.data[i].category == '原因') {
+                                    company_fblikes++;
+                                    //document.getElementById('status').innerHTML += company;
+                                } else if (response.likes.data[i].category == '棋盤類遊戲' || response.likes.data[i].category == '遊戲/玩具' || response.likes.data[i].category == '電玩遊戲' || response.likes.data[i].category == '巡迴演唱會' || response.likes.data[i].category == '音樂流行榜' || response.likes.data[i].category == '音樂會場地' || response.likes.data[i].category == '音樂影片' || response.likes.data[i].category == '音樂獎項' || response.likes.data[i].category == '歌曲' || response.likes.data[i].category == '唱片公司' || response.likes.data[i].category == '唱片專輯' || response.likes.data[i].category == '校隊' || response.likes.data[i].category == '業餘運動隊伍' || response.likes.data[i].category == '運動場所' || response.likes.data[i].category == '運動隊伍' || response.likes.data[i].category == '運動聯盟' || response.likes.data[i].category == '運動員' || response.likes.data[i].category == '教練' || response.likes.data[i].category == '休閒和健身' || response.likes.data[i].category == '體育／娛樂／活動' || response.likes.data[i].category == '電視／電影獎' || response.likes.data[i].category == '電視節目' || response.likes.data[i].category == '電視網' || response.likes.data[i].category == '電視頻道' || response.likes.data[i].category == '電影' || response.likes.data[i].category == '電影／電視工作室' || response.likes.data[i].category == '電影角色' || response.likes.data[i].category == '電影院' || response.likes.data[i].category == '表演藝術' || response.likes.data[i].category == '舞台劇' || response.likes.data[i].category == '廣播電台' || response.likes.data[i].category == '藝術與娛樂' || response.likes.data[i].category == '雜誌' || response.likes.data[i].category == '書局' || response.likes.data[i].category == '書籍' || response.likes.data[i].category == '書籍系列' || response.likes.data[i].category == '圖書館') {
+                                    entertainment_fblikes++;
+                                } else if (response.likes.data[i].category == '服飾' || response.likes.data[i].category == '珠寶/手錶' || response.likes.data[i].category == '健康／美容' || response.likes.data[i].category == '居家裝飾' || response.likes.data[i].category == '工具／設備' || response.likes.data[i].category == '手提袋／行李箱' || response.likes.data[i].category == '家庭用品' || response.likes.data[i].category == '傢俱' || response.likes.data[i].category == '電器用品' || response.likes.data[i].category == '寵物用品' || response.likes.data[i].category == '辦公用品' || response.likes.data[i].category == '嬰兒用品／兒童用品' || response.likes.data[i].category == '食品與飲料公司' || response.likes.data[i].category == '葡萄酒／烈酒' || response.likes.data[i].category == '維生素/營養補充品' || response.likes.data[i].category == '藥劑業' || response.likes.data[i].category == '廚房/烹飪' || response.likes.data[i].category == '手機／平板電腦' || response.likes.data[i].category == '電子產品' || response.likes.data[i].category == '電腦' || response.likes.data[i].category == '相機／相片' || response.likes.data[i].category == '電腦／互聯網網站' || response.likes.data[i].category == '電腦／科技' || response.likes.data[i].category == '軟體' || response.likes.data[i].category == '網站' || response.likes.data[i].category == '應用程式專頁' || response.likes.data[i].category == '建材' || response.likes.data[i].category == '購物／零售' || response.likes.data[i].category == '食品/雜貨' || response.likes.data[i].category == '汽車' || response.likes.data[i].category == '家居裝潢' || response.likes.data[i].category == '房地產' || response.likes.data[i].category == '零售和消費商品' || response.likes.data[i].category == '化學品' || response.likes.data[i].category == '汽車及零件' || response.likes.data[i].category == '商業設備' || response.likes.data[i].category == '戶外用品/體育用品' || response.likes.data[i].category == '本地服務' || response.likes.data[i].category == '住家修繕服務' || response.likes.data[i].category == '商業服務' || response.likes.data[i].category == '美容' || response.likes.data[i].category == '到府服務' || response.likes.data[i].category == '產品／服務' || response.likes.data[i].category == '家庭裝修' || response.likes.data[i].category == '金融' || response.likes.data[i].category == '環保服務' || response.likes.data[i].category == '活動策劃服務' || response.likes.data[i].category == '寵物服務' || response.likes.data[i].category == '廣告／行銷服務') {
+                                    product_fblikes++;
+                                } else if (response.likes.data[i].category == '火車站' || response.likes.data[i].category == '體育場館與體育場' || response.likes.data[i].category == '旅館' || response.likes.data[i].category == '旅遊與觀光' || response.likes.data[i].category == '表演和運動場地' || response.likes.data[i].category == '博物館／美術館' || response.likes.data[i].category == '交通轉運站' || response.likes.data[i].category == '賭場與博弈' || response.likes.data[i].category == '露台／花園' || response.likes.data[i].category == '旅館與住宿' || response.likes.data[i].category == '地標' || response.likes.data[i].category == '節慶' || response.likes.data[i].category == '景點／可從事的活動' || response.likes.data[i].category == '旅遊/休閒' || response.likes.data[i].category == '機場' || response.likes.data[i].category == '本地商家' || response.likes.data[i].category == '雜貨店' || response.likes.data[i].category == '餐廳／咖啡店' || response.likes.data[i].category == '酒吧') {
+                                    loc_fblikes++;
+                                } else if (response.likes.data[i].category == '音樂家／樂團' || response.likes.data[i].category == '播客' || response.likes.data[i].category == '影片導演' || response.likes.data[i].category == '樂團' || response.likes.data[i].category == '音樂家' || response.likes.data[i].category == '設計師' || response.likes.data[i].category == '攝影師' || response.likes.data[i].category == '藝術家' || response.likes.data[i].category == '舞者' || response.likes.data[i].category == '演員' || response.likes.data[i].category == '演員/導演' || response.likes.data[i].category == '喜劇演員' || response.likes.data[i].category == '藝人' || response.likes.data[i].category == '虛構人物' || response.likes.data[i].category == '政府官員' || response.likes.data[i].category == '政治人物' || response.likes.data[i].category == '公眾人物' || response.likes.data[i].category == '寵物' || response.likes.data[i].category == ' 新聞名人' || response.likes.data[i].category == '製作人' || response.likes.data[i].category == '部落客' || response.likes.data[i].category == '廚師' || response.likes.data[i].category == '新聞工作者' || response.likes.data[i].category == '作者' || response.likes.data[i].category == '作家' || response.likes.data[i].category == '企業家' || response.likes.data[i].category == '商業人士' || response.likes.data[i].category == '科學家' || response.likes.data[i].category == '律師' || response.likes.data[i].category == '認證財務代表' || response.likes.data[i].category == '教師' || response.likes.data[i].category == '醫生') {
+                                    public_fblikes++;
+                                } else {
+                                    nocate++;
+                                }
+                            }
+                            total_public_fblikes = public_fblikes / (total_fblikes - nocate) * 100;
+                            total_company_fblikes = company_fblikes / (total_fblikes - nocate) * 100;
+                            total_entertainment_fblikes = entertainment_fblikes / (total_fblikes - nocate) * 100;
+                            total_product_fblikes = product_fblikes / (total_fblikes - nocate) * 100;
+                            total_loc_fblikes = loc_fblikes / (total_fblikes - nocate) * 100;
+                        })
+                }
+
+            </script>
+            <script>
+                var public = 0;
+                var entertainment = 0;
+                var brand = 0;
+                var loc = 0;
+                var company = 0; //粉專類別
+                var count = 0;
+                var total_public = 0,
+                    total_entertainment = 0,
+                    total_brand = 0,
+                    total_loc = 0,
+                    total_company = 0;
+                var index;
+                var max;
+                var num;
+                var page_url;
+                var bol;
+
+                /***************************** page1   夢中角色  *****************************/
+
+                function selectIam() {
+                    document.getElementById("Iam_1").disabled = true;
+                    document.getElementById("Iam_2").disabled = true;
+                    document.getElementById("Iam_3").disabled = true;
+                    document.getElementById("Iam_4").disabled = true;
+                    document.getElementById("Iam_5").disabled = true;
+
+
+                    if (document.getElementById("Iam_1").checked == true) {
+                        public++;
+                    }
+
+                    if (document.getElementById("Iam_2").checked == true) {
+                        entertainment++;
+                    }
+
+                    if (document.getElementById("Iam_3").checked == true) {
+                        brand++;
+                    }
+
+                    if (document.getElementById("Iam_4").checked == true) {
+                        loc++;
+                    }
+
+                    if (document.getElementById("Iam_5").checked == true) {
+                        company++;
+                    }
+                    count++;
+                }
+
+                /***************************** page2   窗戶  *****************************/
+                function selectwindow() {
+                    document.getElementById("window_1").disabled = true;
+                    document.getElementById("window_2").disabled = true;
+                    document.getElementById("window_3").disabled = true;
+                    document.getElementById("window_4").disabled = true;
+                    document.getElementById("window_5").disabled = true;
+
+
+                    if (document.getElementById("window_1").checked == true) {
+                        public++;
+                    }
+
+                    if (document.getElementById("window_2").checked == true) {
+                        entertainment++;
+                    }
+
+                    if (document.getElementById("window_3").checked == true) {
+                        brand++;
+                    }
+
+                    if (document.getElementById("window_4").checked == true) {
+                        loc++;
+                    }
+
+                    if (document.getElementById("window_5").checked == true) {
+                        company++;
+                    }
+                    count++;
+                }
+
+
+                /***************************** page3   電視  *****************************/
+                function selectTV() {
+                    document.getElementById("TV_1").disabled = true;
+                    document.getElementById("TV_2").disabled = true;
+                    document.getElementById("TV_3").disabled = true;
+                    document.getElementById("TV_4").disabled = true;
+                    document.getElementById("TV_5").disabled = true;
+
+
+                    if (document.getElementById("TV_1").checked == true) {
+                        public++;
+                    }
+
+                    if (document.getElementById("TV_2").checked == true) {
+                        entertainment++;
+                    }
+
+                    if (document.getElementById("TV_3").checked == true) {
+                        brand++;
+                    }
+
+                    if (document.getElementById("TV_4").checked == true) {
+                        loc++;
+                    }
+
+                    if (document.getElementById("TV_5").checked == true) {
+                        company++;
+                    }
+                    count++;
+                }
+
+                /***************************** page4   時鐘*****************************/
+                function selectclock() {
+                    document.getElementById("clock_1").disabled = true;
+                    document.getElementById("clock_2").disabled = true;
+                    document.getElementById("clock_3").disabled = true;
+                    document.getElementById("clock_4").disabled = true;
+                    document.getElementById("clock_5").disabled = true;
+
+
+                    if (document.getElementById("clock_1").checked == true) {
+                        public++;
+                    }
+
+                    if (document.getElementById("clock_2").checked == true) {
+                        entertainment++;
+                    }
+
+                    if (document.getElementById("clock_3").checked == true) {
+                        brand++;
+                    }
+
+                    if (document.getElementById("clock_4").checked == true) {
+                        loc++;
+                    }
+
+                    if (document.getElementById("clock_5").checked == true) {
+                        company++;
+                    }
+                    count++;
+                }
+
+
+                /***************************** page5   計畫表*****************************/
+
+                function AllowDrop(event) {
+                    event.preventDefault();
+                }
+
+                function Drag(event) {
+                    event.dataTransfer.setData("text", event.currentTarget.id);
+                }
+
+                function Drop(event) {
+                    var count = 0
+                    event.preventDefault();
+                    var data = event.dataTransfer.getData("text");
+                    event.currentTarget.appendChild(document.getElementById(data));
+                    //第一格放的類別
+
+                }
+
+                function selectplan() {
+                    var x = document.getElementById("Box1").innerHTML;
+                    var y = document.getElementById("Box2").innerHTML;
+                    var z = document.getElementById("Box3").innerHTML;
+                    var m = document.getElementById("Box4").innerHTML;
+
+                    if (x.indexOf("Img1") != -1 || x.indexOf("Img2") != -1 || x.indexOf("Img3") != -1) {
+                        public++;
+                        count++;
+                    }
+
+                    if (x.indexOf("Img4") != -1 || x.indexOf("Img5") != -1 || x.indexOf("Img6") != -1) {
+                        entertainment++;
+                        count++;
+                    }
+
+                    if (x.indexOf("Img7") != -1 || x.indexOf("Img8") != -1 || x.indexOf("Img9") != -1) {
+                        brand++;
+                        loc++;
+                        count++;
+                    }
+
+                    if (x.indexOf("Img10") != -1 || x.indexOf("Img11") != -1 || x.indexOf("Img12") != -1) {
+                        loc++;
+                        count++;
+                    }
+
+                    if (x.indexOf("Img13") != -1 || x.indexOf("Img14") != -1 || x.indexOf("Img15") != -1) {
+                        company++;
+                        count++;
+                    }
+                    /*          **          */
+
+                    if (y.indexOf("Img1") != -1 || y.indexOf("Img2") != -1 || y.indexOf("Img3") != -1) {
+                        public++;
+                        count++;
+                    }
+
+                    if (y.indexOf("Img4") != -1 || y.indexOf("Img5") != -1 || y.indexOf("Img6") != -1) {
+                        entertainment++;
+                        count++;
+
+                    }
+
+                    if (y.indexOf("Img7") != -1 || y.indexOf("Img8") != -1 || y.indexOf("Img9") != -1) {
+                        brand++;
+                        count++;
+                    }
+
+                    if (y.indexOf("Img10") != -1 || y.indexOf("Img11") != -1 || y.indexOf("Img12") != -1) {
+                        loc++;
+                        count++;
+                    }
+
+                    if (y.indexOf("Img13") != -1 || y.indexOf("Img14") != -1 || y.indexOf("Img15") != -1) {
+                        company++;
+                        count++;
+                    }
+
+
+                    if (z.indexOf("Img1") != -1 || z.indexOf("Img2") != -1 || z.indexOf("Img3") != -1) {
+                        public++;
+                        count++;
+                    }
+
+                    if (z.indexOf("Img4") != -1 || z.indexOf("Img5") != -1 || z.indexOf("Img6") != -1) {
+                        entertainment++;
+                        count++;
+
+                    }
+
+                    if (z.indexOf("Img7") != -1 || z.indexOf("Img8") != -1 || z.indexOf("Img9") != -1) {
+                        brand++;
+                        count++;
+                    }
+
+                    if (z.indexOf("Img10") != -1 || z.indexOf("Img11") != -1 || z.indexOf("Img12") != -1) {
+                        loc++;
+                        count++;
+                    }
+
+                    if (z.indexOf("Img13") != -1 || x.indexOf("Img14") != -1 || z.indexOf("Img15") != -1) {
+                        company++;
+                        count++;
+                    }
+
+
+                    if (m.indexOf("Img1") != -1 || m.indexOf("Img2") != -1 || m.indexOf("Img3") != -1) {
+                        public++;
+                        count++;
+                    }
+
+                    if (m.indexOf("Img4") != -1 || m.indexOf("Img5") != -1 || m.indexOf("Img6") != -1) {
+                        entertainment++;
+                        count++;
+
+                    }
+
+                    if (m.indexOf("Img7") != -1 || m.indexOf("Img8") != -1 || m.indexOf("Img9") != -1) {
+                        brand++;
+                        count++;
+                    }
+
+                    if (m.indexOf("Img10") != -1 || m.indexOf("Img11") != -1 || m.indexOf("Img12") != -1) {
+                        loc++;
+                        count++;
+                    }
+
+                    if (m.indexOf("Img13") != -1 || m.indexOf("Img14") != -1 || m.indexOf("Img15") != -1) {
+                        company++;
+                        count++;
+                    }
+                }
+
+                /***************************** page6   鞋櫃*****************************/
+                function selectcarbin() {
+                    document.getElementById("carbin_1").disabled = true;
+                    document.getElementById("carbin_2").disabled = true;
+                    document.getElementById("carbin_3").disabled = true;
+                    document.getElementById("carbin_4").disabled = true;
+                    document.getElementById("carbin_5").disabled = true;
+
+
+                    if (document.getElementById("carbin_1").checked == true) {
+                        public++;
+                    }
+
+                    if (document.getElementById("carbin_2").checked == true) {
+                        entertainment++;
+                    }
+
+                    if (document.getElementById("carbin_3").checked == true) {
+                        brand++;
+                    }
+
+                    if (document.getElementById("carbin_4").checked == true) {
+                        loc++;
+                    }
+
+                    if (document.getElementById("carbin_5").checked == true) {
+                        company++;
+                    }
+                    count++;
+                }
+
+
+
+                /***************************** page7   結果*****************************/
+
+                function Count() {
+                    function SessionResponse(response) {
+                        if (response.status == 'connected') {
+                            total_public = (public / count * 100) * 0.5 + total_public_fblikes * 0.5;
+                            total_entertainment = (entertainment / count * 100) * 0.5 + total_entertainment_fblikes * 0.5;
+                            total_brand = (brand / count * 100) * 0.5 + total_product_fblikes * 0.5;
+                            total_loc = (loc / count * 100) * 0.5 + total_loc_fblikes * 0.5;
+                            total_company = (company / count * 100) * 0.5 + total_company_fblikes * 0.5;
+                        } else {
+
+
+
+                            total_public = public / count * 100;
+                            total_entertainment = entertainment / count * 100;
+                            total_brand = brand / count * 100;
+                            total_loc = loc / count * 100;
+                            total_company = company / count * 100;
+
+                        }
+                    }
+                    FB.getLoginStatus(SessionResponse);
+                    var colors = [
+                            ['#FF8888', '#FF3333'],
+                            ['#FCE6A4', '#EFB917'],
+                            ['#BEE3F7', '#45AEEA'],
+                            ['#66FF66', '#008866'],
+                            ['#F4BCBF', '#D43A43']
+                        ],
+                        circles = [];
+
+                    for (var i = 1; i <= 5; i++) {
+                        var child = document.getElementById('circles-' + i);
+                        var percentage;
+                        switch (i) {
+                            case 1:
+                                percentage = total_public;
+                                break;
+                            case 2:
+                                percentage = total_entertainment;
+                                break;
+                            case 3:
+                                percentage = total_brand;
+                                break;
+                            case 4:
+                                percentage = total_loc;
+                                break;
+                            case 5:
+                                percentage = total_company;
+                                break;
+                            default:
+                                break;
+                        };
+                        circles.push(Circles.create({
+                            id: child.id,
+                            value: percentage,
+                            radius: 60,
+                            width: 20,
+                            colors: colors[i - 1]
+                        }));
+                    }
+
+                    index = [total_public, total_entertainment, total_brand, total_loc, total_company];
+
+                    max = index[0];
+                    num = 0;
+                    bol = 0;
+
+
+
+                    for (var i = 0; i <= 4; i++) {
+                        if (index[i] > max) {
+                            max = index[i];
+                            num = i;
+                        }
+                    }
+
+                }
+
+
+                function website() {
+                    document.getElementById("button_test").href = "../rank/rank.html?" + num;
+                }
+
+            </script>
+
+
+            <!-- The JavaScript -->
+            <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                    $('div.nav img').bind('click', function(event) {
+                        var $anchor = $(this);
+
+                        $('html, body').stop().animate({
+                            scrollTop: $($anchor.attr('href')).offset().top
+                        }, 1500, 'easeInOutExpo');
+                        /*
+                        if you don't want to use the easing effects:
+                        $('html, body').stop().animate({
+                            scrollTop: $($anchor.attr('href')).offset().top
+                        }, 1000);
+                        */
+                        event.preventDefault();
+                    });
+                });
+
+            </script>
+            <script>
+                document.getElementById('shareBtn').onclick = function() {
+                    FB.ui({
+                        method: 'share',
+                        display: 'popup',
+                        hashtag: '#頁遊PageTraveler',
+                        href: 'http://pagetraveler.mgt.ncu.edu.tw/',
+                    }, function(response) {});
+                }
+
+            </script>
+</body>
+
+</html>

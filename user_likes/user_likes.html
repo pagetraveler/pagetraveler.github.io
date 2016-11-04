@@ -1,0 +1,529 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Traveler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/user_likes.css" />
+</head>
+
+<body style="overflow-x: hidden;" onSelectStart="event.returnValue=false">
+    <script src="../assets/js/d3.v3.min.js"></script>
+    <script src="../assets/js/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/check_login.js"></script>
+
+    <div id="header">
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><img src="../images/weblogo.png" alt="" /></span>
+                <h1 id="title">Page Traveler</h1>
+                <p>Start a Page adventure.</p>
+            </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul id="menu">
+                    <li><a id=test href="../index.html" class="skel-layers-ignoreHref"><span>首頁</span></a></li>
+                    <li><a href="#" id="check_login" onclick="fb_login()"><span>登入</span></a></li>
+                    <li id="logout_li"></li>
+                    <li><a href="#" id="contact-link-product" onclick="about_me()"><span>關於我</span></a></li>
+                    <li><a href="../home.html" id="portfolio-link" class="skel-layers-ignoreHref"><span>每日精選</span></a></li>
+                    <li><a href="../discuss/discus.html"><span>熱度分析</span></a></li>
+                    <li><a href="../lottery/lottery.html"><span>抽獎分析</span></a></li>
+                    <li><a href="../rank/rank.html"><span>熱門排行</span></a></li>
+                    <li><a href="../about.html" id="contact-link-product" class="skel-layers-ignoreHref"><span>關於我們</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        <section>
+            <img id="image centered" class="image featured" src="../images/tt.png" alt="search pages" />
+            <div class="container">
+                <div id="div1">
+                     <div class="content">
+                            <svg class="svg"></svg>
+                     </div>
+                </div>
+
+
+            <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+            <script type="text/javascript" language="javascript">
+                google.load("jquery", "1.3");
+            </script>
+            </div>
+        </section>
+    </div>
+    <!-- Footer -->
+
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollzer.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../assets/js/main.js"></script>
+    <!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li>
+                        <li>Design: <a href="#">Page Traveler</a></li>
+                        <li><a href="../policy.html">隱私權政策</a></li>
+					</ul>
+
+			</div>
+    <script>
+        var fblikes;
+       $(window).load(function() {
+           fb_user_likes();
+        });
+        var svg = d3.select('.svg');
+        var root;
+        var tip = d3.tip();
+        var force = d3.layout.force();
+        var colorScale = ["rgb(171, 145, 212)", "#FF79BC", "rgb(100, 180, 142)", "rgb(242,140,96)", "rgb(102,160,229)"];
+        var colorScale_small = ["rgb(213, 181, 252)", "#ffaad5", "rgb(143, 209, 177)", "rgb(250, 178, 122)", "rgb(158, 207, 255)"];
+        var link;
+        var node;
+        var long=[0,0,0,0,0];
+        
+        function categorycolor(color) {
+            if (color == "公司組織") {
+                //company;
+                return colorScale[0];
+            } else if (color == "娛樂") {
+                //entertainment_fblikes++;
+                return colorScale[1];
+            } else if (color == "品牌商品") {
+                // product_fblikes++;
+                return colorScale[2];
+            } else if (color == "地點") {
+                //loc_fblikes++;
+                return colorScale[3];
+            } else if (color == "公眾人物") {
+                return colorScale[4];
+                //public_fblikes++;
+            }
+        }
+        function categorycolor_small(color) {
+            if (color == "公司組織") {
+                //company;
+                return colorScale_small[0];
+            } else if (color == "娛樂") {
+                //entertainment_fblikes++;
+                return colorScale_small[1];
+            } else if (color == "品牌商品") {
+                // product_fblikes++;
+                return colorScale_small[2];
+            } else if (color == "地點") {
+                //loc_fblikes++;
+                return colorScale_small[3];
+            } else if (color == "公眾人物") {
+                return colorScale_small[4];
+                //public_fblikes++;
+            }
+        }
+        function rendering() {
+            var test = parseInt(d3.select(".content").style("width"), 10);
+            var test2 = parseInt(d3.select(".content").style("width"), 10);
+            if(test > 1000){
+                width = 1000;
+            } 
+            else{
+                width = parseInt(d3.select(".content").style("width"), 10);
+            }
+            if(test2 > 900){
+                height = 900;
+            }
+            else{
+                height = parseInt(d3.select(".content").style("width"), 10);
+            }
+            svg.html('');
+            force.linkDistance(function(d) {
+                    if(d.source.name == fblikes.name){
+                        return width/8;
+                    }
+                    else if(d.source.name == "公眾人物"){
+                        return long[0]*1.5;
+                    }
+                    else if(d.source.name == "娛樂"){
+                        return long[1]*1.5;
+                    }else if(d.source.name == "品牌商品"){
+                        return long[2]*1.5;
+                    }
+                    else if(d.source.name == "地點"){
+                        return long[3]*1.5;
+                    }
+                    else if(d.source.name == "公司組織"){
+                        return long[4]*1.5;
+                    }
+                }) //連接線的長度
+                .charge(-200)
+                .gravity(0)
+                .size([width, height])
+                .on("tick", tick);
+
+            svg.attr("width", width)
+                .attr("height", height);
+            link = svg.selectAll(".link");
+            node = svg.selectAll(".node");
+
+            update();
+            
+            tip.html('');
+            tip .attr('class', "tip_style")
+                .offset([0, 0])
+                .html(function(d) {
+                    return d.pages ? 50 // collapsed package
+                        :
+                        d.children ? null // expanded package
+                        :
+                        "<strong>粉專名稱 :<span style='color:white'>" + d.name + "<br><br></span>粉絲人數 :<span style='color:white'>" + d.fan_count + "人</span></strong>";
+                });
+            svg.call(tip);
+        function update() {
+            var nodes = flatten(fblikes);
+            nodes[nodes.length - 1].pages = "pages";
+            var links = d3.layout.tree().links(nodes);
+
+
+            // Restart the force layout.
+            force.nodes(nodes)
+                .links(links)
+                .start();
+
+            // Update links.
+            link = link.data(links, function(d) {
+                return d.target.id;
+            });
+
+
+            link.exit().remove();
+
+            link.enter().insert("line", ".node")
+                .attr("class", function(d){
+                if(d.source.name == fblikes.name){
+                        return "link";
+                    }
+                else{
+                    return "link_2";
+                }
+                
+            });
+
+            // Update nodes.
+            node = node.data(nodes, function(d) {
+                return d.id;
+
+            });
+
+
+            node.exit().remove();
+
+            var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .on("click", function(d) {
+                    if(!d.pages && !d.children){
+                        return  window.open(d.link);                       
+                    }
+                });
+
+            nodeEnter.append("circle")
+                .attr("class", "circle")
+                .call(force.drag);
+            
+            nodeEnter.filter(function(d) {
+                    return d.pages;
+                })
+                .append("svg:pattern")
+                .attr("id", "picture_2")
+                .attr("height", 10)
+                .attr("width", 10)
+                .append("svg:image")
+                .attr("xlink:href", 
+                      function(d) { return (d.picture);})
+                .attr("height", width/6)
+                .attr("width", width/6);
+            
+            node.filter(function(d) {
+                    return !d.children;
+                })
+                .style("stroke","#6C6C6C")
+                .on('mouseover', tip.show)
+                .on('mouseout',tip.hide);
+
+            node.filter(function(d) {
+                    return !d.pages &&　d.children;
+                })
+                .append("text")
+                .attr("dy", "0em")
+                .attr("text-anchor", 'middle')
+                .text(text_name);
+
+            node.select("circle")
+                .style("r", size);
+
+            node.select("circle")
+                .style("fill", color);
+
+        }
+
+        function tick() {
+            link.attr("x1", function(d) {
+                    return d.source.x;
+                })
+                .attr("y1", function(d) {
+                    return d.source.y;
+                })
+                .attr("x2", function(d) {
+                    return d.target.x;
+                })
+                .attr("y2", function(d) {
+                    return d.target.y;
+                });
+
+            node.attr("transform", function(d) {
+                d.x = d.x < 0 ? 0 : d.x ;
+                    d.x = d.x > width ? width : d.x ;
+                    d.y = d.y < 0  ? 0 : d.y ;
+                    d.y = d.y  > height ? height : d.y ;
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+        }
+
+        function color(d, i) {
+            return d.pages ? "url(#picture_2)"
+                :d.children ? categorycolor(d.name) // expanded package
+                :
+                categorycolor_small(d.cate)// leaf node
+        }
+
+        function size(d) {
+            return d.pages ? width/12 // collapsed package
+                :
+                d.children ? children_size(d) // expanded package
+                :
+                width/55;
+        }
+            
+        function children_size(d){
+            if(d.name == fblikes.name){
+                        return width/8;
+            }
+            else if(d.name == "公眾人物"){
+                return long[0];
+            }
+            else if(d.name == "娛樂"){
+                return long[1];
+            }else if(d.name == "品牌商品"){
+                return long[2];
+            }
+            else if(d.name == "地點"){
+                return long[3];
+            }
+            else if(d.name == "公司組織"){
+                return long[4];
+            }
+        }
+
+        function text_name(d) {
+            return　d.name;
+        }
+
+        // Toggle children on click.
+        function click(obj) {
+            if (d3.event.defaultPrevented) return; // ignore drag
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update();
+        }
+
+        // Returns a list of all nodes under the root.
+        function flatten(root) {
+            for(var i=0;i<5;i++){
+                if(root.children[i].children.length>30){
+                    long[i] = width/10;                            
+                }else if(root.children[i].children.length>15){
+                    long[i] = width/15;                            
+                }else if (root.children[i].children.length>10){
+                    long[i] = width/18;
+                }else{
+                    long[i] = width/20-width/40;
+                }
+            }
+            var nodes = [],
+                i = 0;
+
+            function recurse(node) {
+                if (node.children) {
+                    node.children.forEach(recurse);
+                }
+                if (!node.id) {
+                    node.id = ++i;
+                }
+                nodes.push(node);
+            }
+
+            recurse(root);
+            return nodes;
+
+        }
+            
+        }
+        d3.select(window).on('resize', rendering);
+        rendering();
+ 
+    </script>
+    <script>
+        
+        function statusChangeCallback(response) {
+            if (response.status === 'connected') {
+                //var access = response.authResponse.accessToken; 
+                // Logged into your app and Facebook.
+                facebook_likepages();
+            }
+        }
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '553315818188739',
+                cookie: true, // enable cookies to allow the server to access 
+                // the session
+                xfbml: true, // parse social plugins on this page
+                version: 'v2.7' // use graph api version 2.5
+            });
+
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        function facebook_likepages() {
+            FB.api('/me', 'GET', {
+                    "fields": "likes.limit(999){category,name,link,fan_count,talking_about_count},name,id",
+                    "locale": "zh_TW"
+                },
+                function(response) {
+                    $("#check_login").empty();
+                $("#check_login").append("<span><img id='person_picture' src='http://graph.facebook.com/" + response.id + "/picture?type=small'></img>"+response.name+"</span>");
+                $("#logout_li").append("<a href='#' id='logout' onclick='fb_logout()'><span>登出</span></a>");
+                $("#check_login").attr("onclick", "");
+                    fblikes = {
+                        name: "user",
+                        picture: "link",
+                        id: "user_id",
+                        children: [{
+                            name: "公眾人物",
+                            children: []
+                        }, {
+                            name: "娛樂",
+                            children: []
+                        }, {
+                            name: "品牌商品",
+                            children: []
+                        }, {
+                            name: "地點",
+                            children: []
+                        }, {
+                            name: "公司組織",
+                            children: []
+                        }]
+                    };
+                    fblikes.picture = "http://graph.facebook.com/" + response.id + "/picture?type=large";
+                    fblikes.name = response.name;
+                    fblikes.id = response.id;
+                    for (var i = 0; i < response.likes.data.length; i++) {
+                        /*公眾人物*/
+                        if (response.likes.data[i].category == '音樂家／樂團' || response.likes.data[i].category == '播客' || response.likes.data[i].category == '影片導演' || response.likes.data[i].category == '樂團' || response.likes.data[i].category == '音樂家' || response.likes.data[i].category == '設計師' || response.likes.data[i].category == '攝影師' || response.likes.data[i].category == '藝術家' || response.likes.data[i].category == '舞者' || response.likes.data[i].category == '演員' || response.likes.data[i].category == '演員/導演' || response.likes.data[i].category == '喜劇演員' || response.likes.data[i].category == '藝人' || response.likes.data[i].category == '虛構人物' || response.likes.data[i].category == '政府官員' || response.likes.data[i].category == '政治人物' || response.likes.data[i].category == '公眾人物' || response.likes.data[i].category == '寵物' || response.likes.data[i].category == ' 新聞名人' || response.likes.data[i].category == '製作人' || response.likes.data[i].category == '部落客' || response.likes.data[i].category == '廚師' || response.likes.data[i].category == '新聞工作者' || response.likes.data[i].category == '作者' || response.likes.data[i].category == '作家' || response.likes.data[i].category == '企業家' || response.likes.data[i].category == '商業人士' || response.likes.data[i].category == '科學家' || response.likes.data[i].category == '律師' || response.likes.data[i].category == '認證財務代表' || response.likes.data[i].category == '教師' || response.likes.data[i].category == '醫生') {
+                            response.likes.data[i].cate='公眾人物';
+                            fblikes.children[0].children.push(response.likes.data[i]);
+                        }
+                        /*娛樂*/
+                        else if (response.likes.data[i].category == '棋盤類遊戲' || response.likes.data[i].category == '遊戲/玩具' || response.likes.data[i].category == '電玩遊戲' || response.likes.data[i].category == '巡迴演唱會' || response.likes.data[i].category == '音樂流行榜' || response.likes.data[i].category == '音樂會場地' || response.likes.data[i].category == '音樂影片' || response.likes.data[i].category == '音樂獎項' || response.likes.data[i].category == '歌曲' || response.likes.data[i].category == '唱片公司' || response.likes.data[i].category == '唱片專輯' || response.likes.data[i].category == '校隊' || response.likes.data[i].category == '業餘運動隊伍' || response.likes.data[i].category == '運動場所' || response.likes.data[i].category == '運動隊伍' || response.likes.data[i].category == '運動聯盟' || response.likes.data[i].category == '運動員' || response.likes.data[i].category == '教練' || response.likes.data[i].category == '休閒和健身' || response.likes.data[i].category == '體育／娛樂／活動' || response.likes.data[i].category == '電視／電影獎' || response.likes.data[i].category == '電視節目' || response.likes.data[i].category == '電視網' || response.likes.data[i].category == '電視頻道' || response.likes.data[i].category == '電影' || response.likes.data[i].category == '電影／電視工作室' || response.likes.data[i].category == '電影角色' || response.likes.data[i].category == '電影院' || response.likes.data[i].category == '表演藝術' || response.likes.data[i].category == '舞台劇' || response.likes.data[i].category == '廣播電台' || response.likes.data[i].category == '藝術與娛樂' || response.likes.data[i].category == '雜誌' || response.likes.data[i].category == '書局' || response.likes.data[i].category == '書籍' || response.likes.data[i].category == '書籍系列' || response.likes.data[i].category == '圖書館') {
+                            response.likes.data[i].cate='娛樂';
+                            fblikes.children[1].children.push(response.likes.data[i]);
+
+                        }
+                        /*品牌商品*/
+                        else if (response.likes.data[i].category == '服飾' || response.likes.data[i].category == '珠寶/手錶' || response.likes.data[i].category == '健康／美容' || response.likes.data[i].category == '居家裝飾' || response.likes.data[i].category == '工具／設備' || response.likes.data[i].category == '手提袋／行李箱' || response.likes.data[i].category == '家庭用品' || response.likes.data[i].category == '傢俱' || response.likes.data[i].category == '電器用品' || response.likes.data[i].category == '寵物用品' || response.likes.data[i].category == '辦公用品' || response.likes.data[i].category == '嬰兒用品／兒童用品' || response.likes.data[i].category == '食品與飲料公司' || response.likes.data[i].category == '葡萄酒／烈酒' || response.likes.data[i].category == '維生素/營養補充品' || response.likes.data[i].category == '藥劑業' || response.likes.data[i].category == '廚房/烹飪' || response.likes.data[i].category == '手機／平板電腦' || response.likes.data[i].category == '電子產品' || response.likes.data[i].category == '電腦' || response.likes.data[i].category == '相機／相片' || response.likes.data[i].category == '電腦／互聯網網站' || response.likes.data[i].category == '電腦／科技' || response.likes.data[i].category == '軟體' || response.likes.data[i].category == '網站' || response.likes.data[i].category == '應用程式專頁' || response.likes.data[i].category == '建材' || response.likes.data[i].category == '購物／零售' || response.likes.data[i].category == '食品/雜貨' || response.likes.data[i].category == '汽車' || response.likes.data[i].category == '家居裝潢' || response.likes.data[i].category == '房地產' || response.likes.data[i].category == '零售和消費商品' || response.likes.data[i].category == '化學品' || response.likes.data[i].category == '汽車及零件' || response.likes.data[i].category == '商業設備' || response.likes.data[i].category == '戶外用品/體育用品' || response.likes.data[i].category == '本地服務' || response.likes.data[i].category == '住家修繕服務' || response.likes.data[i].category == '商業服務' || response.likes.data[i].category == '美容' || response.likes.data[i].category == '到府服務' || response.likes.data[i].category == '產品／服務' || response.likes.data[i].category == '家庭裝修' || response.likes.data[i].category == '金融' || response.likes.data[i].category == '環保服務' || response.likes.data[i].category == '活動策劃服務' || response.likes.data[i].category == '寵物服務' || response.likes.data[i].category == '廣告／行銷服務') {
+                            response.likes.data[i].cate='品牌商品';
+                            fblikes.children[2].children.push(response.likes.data[i]);
+
+                        }
+                        /*地點*/
+                        else if (response.likes.data[i].category == '火車站' || response.likes.data[i].category == '體育場館與體育場' || response.likes.data[i].category == '旅館' || response.likes.data[i].category == '旅遊與觀光' || response.likes.data[i].category == '表演和運動場地' || response.likes.data[i].category == '博物館／美術館' || response.likes.data[i].category == '交通轉運站' || response.likes.data[i].category == '賭場與博弈' || response.likes.data[i].category == '露台／花園' || response.likes.data[i].category == '旅館與住宿' || response.likes.data[i].category == '地標' || response.likes.data[i].category == '節慶' || response.likes.data[i].category == '景點／可從事的活動' || response.likes.data[i].category == '旅遊/休閒' || response.likes.data[i].category == '機場' || response.likes.data[i].category == '本地商家' || response.likes.data[i].category == '雜貨店' || response.likes.data[i].category == '餐廳／咖啡店' || response.likes.data[i].category == '酒吧') {
+                            response.likes.data[i].cate='地點';
+                            fblikes.children[3].children.push(response.likes.data[i]);
+
+                        }
+                        /*公司*/
+                        else if (response.likes.data[i].category == '工業公司' || response.likes.data[i].category == '礦業公司' || response.likes.data[i].category == '農業' || response.likes.data[i].category == '能源公司' || response.likes.data[i].category == '航太科技公司' || response.likes.data[i].category == '生物科技公司' || response.likes.data[i].category == '保險公司' || response.likes.data[i].category == '公司' || response.likes.data[i].category == '小型企業' || response.likes.data[i].category == '工程/建築' || response.likes.data[i].category == '金融公司' || response.likes.data[i].category == '電信公司' || response.likes.data[i].category == '媒體／新聞機構' || response.likes.data[i].category == '法律' || response.likes.data[i].category == '農業公司' || response.likes.data[i].category == '零售商' || response.likes.data[i].category == '電腦公司' || response.likes.data[i].category == '網路公司' || response.likes.data[i].category == '醫療產業公司' || response.likes.data[i].category == '貨物和貨運公司' || response.likes.data[i].category == '旅遊公司' || response.likes.data[i].category == '食品與飲料公司' || response.likes.data[i].category == '律師事務所' || response.likes.data[i].category == '科學與工程' || response.likes.data[i].category == '化工公司' || response.likes.data[i].category == '汽車公司' || response.likes.data[i].category == '戶外及運動用品公司' || response.likes.data[i].category == '不動產' || response.likes.data[i].category == '海洋' || response.likes.data[i].category == '航空' || response.likes.data[i].category == '商業' || response.likes.data[i].category == '設計' || response.likes.data[i].category == '時尚' || response.likes.data[i].category == '服飾(品牌)' || response.likes.data[i].category == '品牌' || response.likes.data[i].category == '大學' || response.likes.data[i].category == '中學' || response.likes.data[i].category == '幼稚園' || response.likes.data[i].category == '國小' || response.likes.data[i].category == '教育' || response.likes.data[i].category == '學校' || response.likes.data[i].category == '政治組織' || response.likes.data[i].category == '公共服務與政府' || response.likes.data[i].category == '政府機關' || response.likes.data[i].category == '政黨' || response.likes.data[i].category == '社區與政府' || response.likes.data[i].category == '醫療與保健' || response.likes.data[i].category == '醫院／診所' || response.likes.data[i].category == '健康/美容' || response.likes.data[i].category == '健康/醫療/製藥' || response.likes.data[i].category == '社群' || response.likes.data[i].category == '非政府組織 （NGO）' || response.likes.data[i].category == '組織' || response.likes.data[i].category == '非營利組織' || response.likes.data[i].category == '社區組織' || response.likes.data[i].category == '宗教組織' || response.likes.data[i].category == '社區服務' || response.likes.data[i].category == '俱樂部' || response.likes.data[i].category == '原因') {
+                            response.likes.data[i].cate='公司組織';
+                            fblikes.children[4].children.push(response.likes.data[i]);
+
+                        }
+                    }
+                    rendering(fblikes);
+                }
+            )
+        }
+        function fb_login() {
+            FB.login(function (response) {
+                statusChangeCallback(response);
+            }, {
+                scope: 'user_likes,public_profile'
+            });
+        }
+
+        function fb_logout() {
+            FB.logout(function (response) {
+                $("#check_login").empty();
+                $("#logout_li").empty();
+                $("#check_login").append("<span>登入</span>");
+                $("#check_login").attr("onclick", "fb_login()")
+            })
+        }
+
+        function about_me() {
+            FB.getLoginStatus(function (response) {
+                if (response.status === 'connected') {
+                    location.href = "http://140.115.82.103/NCU_Project/1030_new/case_web/home_page/user_likes/user_likes.html";
+
+                } else if (response.status === 'not_authorized') {
+                    // The person is logged into Facebook, but not your app.
+                    alert("請授權");
+                } else {
+                    alert("請先登入");
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>

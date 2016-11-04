@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Page Traveler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/rank.css">
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <script src="../assets/js/check_login.js"></script>
+    <script src="../assets/js/spin.min.js"></script>
+    <script src="category_rank.js"></script>
+    <base target="_self" />
+</head>
+
+<body>
+    <!-- Header -->
+    <div id="header">
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><img src="../images/weblogo.png" alt="" /></span>
+                <h1 id="title">Page Traveler</h1>
+                <p>Start a Page adventure.</p>
+            </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul id="menu">
+                    <li><a id=test href="../index.html" class="skel-layers-ignoreHref"><span>首頁</span></a></li>
+                    <li><a href="#" id="check_login" onclick="fb_login()"><span>登入</span></a></li>
+                    <li id="logout_li"></li>
+                    <li><a href="#" id="contact-link-product" onclick="about_me()"><span>關於我</span></a></li>
+                    <li><a href="../home.html" id="portfolio-link" class="skel-layers-ignoreHref"><span>每日精選</span></a></li>
+                    <li><a href="../discuss/discus.html"><span>熱度分析</span></a></li>
+                    <li><a href="../lottery/lottery.html"><span>抽獎分析</span></a></li>
+                    <li><a href="rank.html"><span>熱門排行</span></a></li>
+                    <li><a href="../about.html" id="contact-link-product" class="skel-layers-ignoreHref"><span>網站簡介</span></a></li>
+
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        <section>
+            <div class="container">
+                <img id="image centered" class="image featured" src="../images/rank_title.png" alt="search pages" />
+
+                <form>
+                    <select id="select_rank" onchange="rank_chioce()">
+					<option value="all">全部</option>
+					<option value="public">公眾人物</option>
+					<option value="entertainment">娛樂</option>
+					<option value="product">品牌商品</option>
+					<option value="location">地點</option>
+					<option value="company">公司組織</option>
+
+				</select>
+                </form>
+
+                <table id="table1" cellpadding="10" cellpadding="8">
+                    <tr>
+                        <td rowspan="2" class="table_title"></td>
+                        <!--row0 cell0 名次-->
+                        <td height='10' width='10' class="table_title"></td>
+                        <!--row0 cell1 上下降-->
+                        <td rowspan="2" class="table_title"></td>
+                        <!--row0 cell2 頭貼-->
+                        <td rowspan="2" class="table_title">粉專名稱</td>
+                        <!--row0 cell3 名稱-->
+                        <td rowspan="2" class="last table_title">熱門文章</td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="table_title"></td>
+                        <!--row1 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">1</td>
+                        <!--row0 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row0 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row0 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row0 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row1 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">2</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">3</td>
+                        <td height='10' width='10'></td>
+                        <td rowspan="2" class="tt"></td>
+                        <td rowspan="2" class="tt"></td>
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">4</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">5</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">6</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">7</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">8</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">9</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                    <tr>
+                        <td rowspan="2" class="rank">10</td>
+                        <!--row2 cell0 名次-->
+                        <td height='10' width='10'></td>
+                        <!--row2 cell1 上下降-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell2 頭貼-->
+                        <td rowspan="2" class="tt"></td>
+                        <!--row2 cell3 名稱-->
+                        <td rowspan="2" class="last"></td>
+                        <!--row0 cell3 文章-->
+                    </tr>
+                    <tr>
+                        <td class="tt"></td>
+                        <!--row3 cell0 上下降名次-->
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript" language="javascript">
+        google.load("jquery", "1.3");
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            var url = location.href;
+            var temp = url.split("?")[1];
+            var x="all";
+            if (temp == 0) {
+                $("#select_rank option[value=public]").attr("selected", "true");
+                x="public";
+            } else if (temp == 1) {
+                $("#select_rank option[value=entertainment]").attr("selected", "true");
+                x="entertainment";
+            } else if (temp == 2) {
+                $("#select_rank option[value=product]").attr("selected", "true");
+                x="product";
+
+            } else if (temp == 3) {
+                $("#select_rank option[value=location]").attr("selected", "true");
+                x="location";
+            } else if (temp == 4) {
+                $("#select_rank option[value=company]").attr("selected", "true");
+                x="company";
+            } else {
+                $("#select_rank option[value=all]").attr("selected", "true");
+                x="all";
+            }
+            rank_chioce(x);
+        });
+
+    </script>
+
+    <!-- Footer -->
+    <div id="footer">
+
+        <!-- Copyright -->
+        <ul class="copyright">
+            <li>&copy; Untitled. All rights reserved.</li>
+            <li>Design: <a href="#">Page Traveler</a></li>
+            <li><a href="../policy.html">隱私權政策</a></li>
+        </ul>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollzer.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../assets/js/main.js"></script>
+
+</body>
+
+</html>
