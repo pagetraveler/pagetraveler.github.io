@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Page Traveler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../assets/css/related.css" />
+</head>
+
+<body style="overflow-x: hidden;" onSelectStart="event.returnValue=false">
+    <script src="../assets/js/d3.v3.min.js"></script>
+    <script src="../assets/js/d3.tip.v0.6.3.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/check_login.js"></script>
+
+    <div id="header">
+        <div class="top">
+            <!-- Logo -->
+            <div id="logo">
+                <span class="image avatar48"><img src="../images/weblogo.png" alt="" /></span>
+                <h1 id="title">Page Traveler</h1>
+                <p>ideas make sence.</p>
+            </div>
+            <!-- Nav -->
+            <nav id="nav">
+                <ul id="menu">
+                    <li><a id=test href="../index.html" class="skel-layers-ignoreHref"><span>首頁</span></a></li>
+                    <li><a href="#" id="check_login" onclick="fb_login()"><span>登入</span></a></li>
+                    <li id="logout_li"></li>
+                    <li><a href="#" id="contact-link-product" onclick="about_me()"><span>關於我</span></a></li>
+                    <li><a href="../home.html" id="portfolio-link" class="skel-layers-ignoreHref"><span>每日精選</span></a></li>
+                    <li><a href="discus.html"><span>熱度分析</span></a></li>
+                    <li><a href="../lottery/lottery.html"><span>抽獎分析</span></a></li>
+                    <li><a href="../rank/rank.html"><span>熱門排行</span></a></li>
+                    <li><a href="../about.html" id="contact-link-product" class="skel-layers-ignoreHref"><span>關於我們</span></a></li>
+                </ul>
+            </nav>
+        </div>
+        
+    </div>
+
+    <!-- Main -->
+    <div id="main">
+        <section>
+            <img id="image centered" class="image featured" src="../images/t2.png" alt="search pages" />
+
+            <div class="container">
+                <button onclick="history.back(); return false;">BACK</button>
+            <!--連結方式要改為不開新分頁 -->
+                <div id="div1">
+                    <div class="content">
+                <svg class="svg"></svg>
+            </div>
+                </div>
+
+
+            <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+            <script type="text/javascript" language="javascript">
+                google.load("jquery", "1.3");
+            </script>
+</div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+
+
+    <!-- Scripts -->
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/jquery.scrolly.min.js"></script>
+    <script src="../assets/js/jquery.scrollzer.min.js"></script>
+    <script src="../assets/js/skel.min.js"></script>
+    <script src="../assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="../assets/js/main.js"></script>
+
+
+    <script>
+        var svg = d3.select('.svg');
+        var root;
+        var tip = d3.tip();
+        var force = d3.layout.force();
+        var colorScale = ["rgba(177,80,229,0.7)", "rgba(255,96,175,0.7)", "rgba(98,170,90,0.7)", "rgba(242,140,96,0.7)", "rgba(102,160,229,0.7)", "rgba(184,168,168,0.7)"];
+        var link;
+        var node;
+        var url = location.href;
+        //取得問號之後的值
+        var temp = url.split("?");
+        var urll = "oauth.php?" + temp[1];
+        function categorycolor(color){
+                         if (color == '工業公司' || color == '礦業公司' || color == '農業' || color == '能源公司' || color == '航太科技公司' || color == '生物科技公司' || color == '保險公司' || color == '公司' || color == '小型企業' || color == '工程/建築' || color == '金融公司' || color == '電信公司' || color == '媒體／新聞機構' || color == '法律' || color == '農業公司' || color == '零售商' || color == '電腦公司' || color == '網路公司' || color == '醫療產業公司' || color == '貨物和貨運公司' || color == '旅遊公司' || color == '食品與飲料公司' || color == '律師事務所' || color == '科學與工程' || color == '化工公司' || color == '汽車公司' || color == '戶外及運動用品公司' || color == '不動產' || color == '海洋' || color == '航空' || color == '商業' || color == '設計' || color == '時尚' || color == '服飾(品牌)' || color == '品牌' || color == '大學' || color == '中學' || color == '幼稚園' || color == '國小' || color == '教育' || color == '學校' || color == '政治組織' || color == '公共服務與政府' || color == '政府機關' || color == '政黨' || color == '社區與政府' || color == '醫療與保健' || color == '醫院／診所' || color == '健康/美容' || color == '健康/醫療/製藥' || color == '社群' || color == '非政府組織 （NGO）' || color == '組織' || color == '非營利組織' || color == '社區組織' || color == '宗教組織' || color == '社區服務' || color == '俱樂部' || color == '原因') {
+                                        //company;
+                             return colorScale[0];
+                         } else if (color == '棋盤類遊戲' || color == '遊戲/玩具' || color == '電玩遊戲' || color == '巡迴演唱會' || color == '音樂流行榜' || color == '音樂會場地' || color == '音樂影片' || color == '音樂獎項' || color == '歌曲' || color == '唱片公司' || color == '唱片專輯' || color == '校隊' || color == '業餘運動隊伍' || color == '運動場所' || color == '運動隊伍' || color == '運動聯盟' || color == '運動員' || color == '教練' || color == '休閒和健身' || color == '體育／娛樂／活動' || color == '電視／電影獎' || color == '電視節目' || color == '電視網' || color == '電視頻道' || color == '電影' || color == '電影／電視工作室' || color == '電影角色' || color == '電影院' || color == '表演藝術' || color == '舞台劇' || color == '廣播電台' || color == '藝術與娛樂' || color == '雜誌' || color == '書局' || color == '書籍' || color == '書籍系列' || color == '圖書館') {
+                                        //entertainment_fblikes++;
+                             return colorScale[1];
+                        } else if (color == '服飾' || color == '珠寶/手錶' || color == '健康／美容' || color == '居家裝飾' || color == '工具／設備' || color == '手提袋／行李箱' || color == '家庭用品' || color == '傢俱' || color == '電器用品' || color == '寵物用品' || color == '辦公用品' || color == '嬰兒用品／兒童用品' || color == '食品與飲料公司' || color == '葡萄酒／烈酒' || color == '維生素/營養補充品' || color == '藥劑業' || color == '廚房/烹飪' || color == '手機／平板電腦' || color == '電子產品' || color == '電腦' || color == '相機／相片' || color == '電腦／互聯網網站' || color == '電腦／科技' || color == '軟體' || color == '網站' || color == '應用程式專頁' || color == '建材' || color == '購物／零售' || color == '食品/雜貨' || color == '汽車' || color == '家居裝潢' || color == '房地產' || color == '零售和消費商品' || color == '化學品' || color == '汽車及零件' || color == '商業設備' || color == '戶外用品/體育用品' || color == '本地服務' || color == '住家修繕服務' || color == '商業服務' || color == '美容' || color == '到府服務' || color == '產品／服務' || color == '家庭裝修' || color == '金融' || color == '環保服務' || color == '活動策劃服務' || color == '寵物服務' || color == '廣告／行銷服務') {
+                           // product_fblikes++;
+                            return colorScale[2];
+                        } else if (color == '火車站' || color == '體育場館與體育場' || color == '旅館' || color == '旅遊與觀光' || color == '表演和運動場地' || color == '博物館／美術館' || color == '交通轉運站' || color == '賭場與博弈' || color == '露台／花園' || color == '旅館與住宿' || color == '地標' || color == '節慶' || color == '景點／可從事的活動' || color == '旅遊/休閒' || color == '機場' || color == '本地商家' || color == '雜貨店' || color == '餐廳／咖啡店' || color == '酒吧') {
+                            //loc_fblikes++;
+                            return colorScale[3];
+                        } else if (color == '音樂家／樂團' || color == '播客' || color == '影片導演' || color == '樂團' || color == '音樂家' || color == '設計師' || color == '攝影師' || color == '藝術家' || color == '舞者' || color == '演員' || color == '演員/導演' || color == '喜劇演員' || color == '藝人' || color == '虛構人物' || color == '政府官員' || color == '政治人物' || color == '公眾人物' || color == '寵物' || color == ' 新聞名人' || color == '製作人' || color == '部落客' || color == '廚師' || color == '新聞工作者' || color == '作者' || color == '作家' || color == '企業家' || color == '商業人士' || color == '科學家' || color == '律師' || color == '認證財務代表' || color == '教師' || color == '醫生') {
+                            return colorScale[4];
+                            //public_fblikes++;
+                        } else {
+                            return colorScale[5];
+                            //nocate++;
+                        }
+        }
+        function rendering() {
+            var test = parseInt(d3.select(".content").style("width"), 10);
+            var test2 = parseInt(d3.select(".content").style("width"), 10);
+            if(test > 1400){
+                width = 1400;
+            } 
+            else{
+                width = parseInt(d3.select(".content").style("width"), 10);
+            }
+            if(test2 > 1000){
+                height = 1000;
+            }
+            else{
+                height = parseInt(d3.select(".content").style("width"), 10);
+            }
+            
+            svg.html('');
+            force.linkDistance(width/4) //連接線的長度
+                .charge(-200)
+                .gravity(0)
+                .size([width, height])
+                .on("tick", tick);
+
+            svg.attr("width", width)
+                .attr("height", height);
+            link = svg.selectAll(".link");
+            node = svg.selectAll(".node");
+
+
+            d3.json(urll, function(error, json) {
+                root = json;
+                console.log(root);
+                update();
+            });
+            
+            tip.html('');
+            tip = d3.tip()
+                .attr('class', "tip_style")
+                .offset([-10, 0])
+                .html(function(d) {
+                    return d._data ? 50 // collapsed package
+                        :
+                        d.children ? null // expanded package
+                        :
+                        "<strong>粉專名稱 :<span style='color:white'>" + d.name + "<br><br></span>粉絲人數 :<span style='color:white'>" + d.fan_count + "人</span></strong>";
+                });
+            svg.call(tip);
+        function update() {
+            var nodes = flatten(root),
+                links = d3.layout.tree().links(nodes);
+
+
+            // Restart the force layout.
+            force.nodes(nodes)
+                .links(links)
+                .start();
+
+            // Update links.
+            link = link.data(links, function(d) {
+                return d.target.id;
+            });
+
+
+            link.exit().remove();
+
+            link.enter().insert("line", ".node")
+                .attr("class", "link");
+
+            // Update nodes.
+            node = node.data(nodes, function(d) {
+                return d.id;
+
+            });
+
+
+            node.exit().remove();
+
+            var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .on("click", function(d) {
+                    window.open(d.link);
+                });
+
+            nodeEnter.append("svg:a")
+                .append("circle")
+                .attr("class", "circle")
+                .call(force.drag);
+            
+            node.filter(function(d) {
+                    return !d.children
+                })
+                .on('mouseover', tip.show)
+                .on('mouseout', tip.hide);
+
+            node.append("text")
+                .attr("dy", "-3em")
+                .attr("text-anchor", 'middle')
+                .text(text_name);
+
+            node.append("text")
+                .attr("dy", "0em")
+                .attr("text-anchor", 'middle')
+                .text(text_fan);
+
+            node.append("text")
+                .attr("dy", "3em")
+                .attr("text-anchor", 'middle')
+                .text(text_talk);
+
+
+            node.select("circle")
+                .style("r", size);
+
+            node.select("circle")
+                .style("fill", color);
+
+        }
+
+        function tick() {
+            link.attr("x1", function(d) {
+                    return d.source.x;
+                })
+                .attr("y1", function(d) {
+                    return d.source.y;
+                })
+                .attr("x2", function(d) {
+                    return d.target.x;
+                })
+                .attr("y2", function(d) {
+                    return d.target.y;
+                });
+
+            node.attr("transform", function(d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+        }
+
+        function color(d, i) {
+            return d._data ? "#3182bd" // collapsed package
+                :
+                d.children ? "#F5F5DC" // expanded package
+                :
+                categorycolor(d.category); // leaf node
+        }
+
+        function size(d) {
+            return d._data ? 50 // collapsed package
+                :
+                d.children ? width/5 // expanded package
+                :
+                width/40;
+        }
+
+        function text_name(d) {
+            return d._data ? 50 // collapsed package
+                :
+                d.children ? "粉專名稱：" + d.name // expanded package
+                :
+                null;
+        }
+
+        function text_fan(d) {
+            return d._data ? 50 // collapsed package
+                :
+                d.children ? "粉絲人數：" + d.fan_count + "人" // expanded package
+                :
+                null;
+        }
+
+        function text_talk(d) {
+            return d._data ? 50 // collapsed package
+                :
+                d.children ? "活躍人數：" + d.talking_about_count + "人" // expanded package
+                :
+                null;
+        }
+
+
+
+        // Toggle children on click.
+        function click(obj) {
+            if (d3.event.defaultPrevented) return; // ignore drag
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update();
+        }
+
+        // Returns a list of all nodes under the root.
+        function flatten(root) {
+            var nodes = [],
+                i = 0;
+
+            function recurse(node) {
+                if (node.children) {
+                    node.children.forEach(recurse);
+                }
+                if (!node.id) {
+                    node.id = ++i;
+                }
+                nodes.push(node);
+            }
+
+            recurse(root);
+            return nodes;
+
+        }
+            
+        }
+        d3.select(window).on('resize', rendering);
+        rendering();
+    </script>
+    <!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li>
+                        <li>Design: <a href="#">Page Traveler</a></li>
+                        <li><a href="../policy.html">隱私權政策</a></li>
+					</ul>
+
+			</div>
+</body>
+
+</html>

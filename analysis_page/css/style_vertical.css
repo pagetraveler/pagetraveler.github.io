@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+}
+body {
+    background-color: rgb(245, 245, 245);
+    color: rgb(0, 0, 0);
+    height: 100%;
+    overflow: hidden;
+}
+.section{
+    margin:0px;
+    height:4000px;
+    width:100%;
+    float:left;
+    
+}
+.section h2{
+    margin:50px 0px 30px 50px;
+}
+
+.section ul{
+    list-style:none;
+    margin:20px 0px 0px 550px;
+}
+/*下一頁標籤*/
+.section ul li{ 
+   	color: black;
+    margin-top: 0.5em;
+    font-size: 28px;
+    letter-spacing: 1px;
+	font-family: Microsoft JhengHei;
+	font-weight: bold;
+    text-transform:capitalize;
+    display: block;
+	
+}
+
+.section ul li a{
+    display:block;
+    color:#000;
+
+}
+.section ul li a:hover{
+    text-decoration:none;
+    color:#000;
+}
+
+.text {
+	color: black;
+    margin-top: 0.5em;
+    font-size: 28px;
+    letter-spacing: 1px;
+	font-family: Microsoft JhengHei;
+	font-weight: bold;
+    text-transform:capitalize;
+    display: block;
+	
+}
+
+/* ************************************************************
+    Scene 0   開始畫面
+************************************************************ */
+
+#section0{
+	background-color: 	#00DD77	;
+}
+
+
+#section1{
+	background-color: #5599FF;
+}
+
+/* ************************************************************
+    Scene 1  夢中角色
+************************************************************ */
+
+
+
+
+.Iam input{
+		  	margin:0;padding:0;
+	  	}
+	  
+
+   		.Iam_1{
+			background-image:url(../images/Q1/Iam_1.png);
+			cursor:pointer;
+			background-size:contain;
+			background-repeat:no-repeat;
+    		display:inline-block;
+			width:100px;height:100px;
+			-webkit-transition: all 100ms ease-in; 
+    		-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+	  	}
+	  	.Iam_2{
+			background-image:url(../images/Q1/Iam_2.png);
+			cursor:pointer;
+			background-size:contain;
+			background-repeat:no-repeat;
+    		display:inline-block;
+			width:100px;height:100px;
+			-webkit-transition: all 100ms ease-in; 
+    		-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+	    }
+	    .Iam_3{
+			background-image:url(../images/Q1/Iam_3.png);
+			cursor:pointer;
+			background-size:contain;
+			background-repeat:no-repeat;
+    		display:inline-block;
+			width:100px;height:100px;
+			-webkit-transition: all 100ms ease-in; 
+    		-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+	    }
+	    .Iam_4{
+			background-image:url(../images/Q1/Iam_4.png);
+			cursor:pointer;
+			background-size:contain;
+			background-repeat:no-repeat;
+    		display:inline-block;
+			width:100px;height:100px;
+			-webkit-transition: all 100ms ease-in; 
+    		-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+	    }
+	  	.Iam_5{
+			background-image:url(../images/Q1/Iam_5.png);
+			cursor:pointer;
+			background-size:contain;
+			background-repeat:no-repeat;
+    		display:inline-block;
+			width:100px;height:100px;
+			-webkit-transition: all 100ms ease-in; 
+    		-webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+	    }
+	  
+	  	.Iam input:active +.Iamtype{opacity: .9;}
+	  
+	  	.Iam input:checked +.Iamtype1{-webkit-filter: none; background-image:url(../images/Q1/Iam_1_.png);} 
+	  	.Iam input:checked +.Iamtype2{-webkit-filter: none; background-image:url(../images/Q1/Iam_2_.png);}
+	  	.Iam input:checked +.Iamtype3{-webkit-filter: none; background-image:url(../images/Q1/Iam_3_.png);}
+	  	.Iam input:checked +.Iamtype4{-webkit-filter: none; background-image:url(../images/Q1/Iam_4_.png);}
+	  	.Iam input:checked +.Iamtype5{-webkit-filter: none; background-image:url(../images/Q1/Iam_5_.png);}
+
+	  
+	  .Iamtype:hover{
+		  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9); 
+       }
+
+

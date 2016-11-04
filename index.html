@@ -1,0 +1,166 @@
+<html>
+
+<head>
+    <title>Page Traveler</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+     <meta property="og:title" content="一起來頁遊☺" />
+    <meta property="og:description" content="頁遊找出你喜愛的粉專" />
+    <meta property="og:image" content="http://pagetraveler.mgt.ncu.edu.tw/images/share.png" />
+    <meta property="og:url" content="http://pagetraveler.mgt.ncu.edu.tw/analysis_page/" />
+    <meta property="fb:app_id" content="553315818188739" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="600" />
+    
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <link rel="stylesheet" href="assets/css/reveal_forindex.css">
+
+    <!-- Attach necessary scripts -->
+    <!-- <script type="text/javascript" src="jquery-1.4.4.min.js"></script> -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.reveal.js"></script>
+
+
+</head>
+<style>
+    body {
+        background-image: url("images/bg.jpg");
+        background-position: center center;
+        background-size:cover;
+        
+    }
+    
+    h2,
+    strong,
+    p,
+    a {
+        color: white;
+    }
+</style>
+
+<body>
+    <script>
+        $(document).ready(function(){
+             var width=$(window).width();
+            if (width<=960){
+                 $("header").empty();
+                 $("footer").empty();
+                 $("header").append("<br><br><div style='display:block;'><img id='logo_banner' src='images/weblogo_no.png' alt=''/></div><div style='display:block;'><a href='home.html' class='button scrolly'>ENTER</a></div>");
+             }
+             else{
+                 $("header").empty();
+                 $("footer").empty();
+                 $("header").append("<br><br><img id='logo_banner' src='images/logo_banner.png' alt='' /><br><br><a data-reveal-id='myModal' class='button scrolly' data-animation='none'>TESTING</a>");
+                 $("footer").append("<a href='home.html' class='scrolly' style='float:right; color:#000;'>SKIP</a>");
+             }
+            $(window).resize(function(){
+            var width=$(window).width();
+            if (width<=960){
+                 $("header").empty();
+                 $("footer").empty();
+                 $("header").append("<br><br><div style='display:inline-block;'><img id='logo_banner' src='images/weblogo_no.png' alt=''/></div><div style='display:block;'><a href='home.html' class='button scrolly'>ENTER</a></div>");
+             }
+             else{
+                 $("header").empty();
+                 $("footer").empty();
+                 $("header").append("<br><br><img id='logo_banner' src='images/logo_banner.png' width='85%' height='50%' alt=''/><br><br><a data-reveal-id='myModal' class='button scrolly' data-animation='none'>TESTING</a>");
+                 $("footer").append("<a href='home.html' class='scrolly' style='float:right; color:#000;'>SKIP</a>");
+             }
+        })
+        });
+
+        function fb_login() {
+            FB.login(function(response) {
+                statusChangeCallback(response);
+                console.log(response);
+            }, {
+                scope: 'user_likes'
+            });
+        }
+    /******************fb登入****************/
+
+        // This is called with the results from from FB.getLoginStatus()
+
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                testAPI();
+            } else if (response.status === 'not_authorized') {
+                // The person is logged into Facebook, but not your app.
+            } 
+        }
+
+        // This function is called when someone finishes with the Login
+        // Button.  See the onlogin handler attached to it in the sample
+        // code below.
+        function checkLoginState() {
+            FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+        }
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId: '553315818188739',
+                cookie: true, // enable cookies to allow the server to access 
+                // the session
+                xfbml: true, // parse social plugins on this page
+                version: 'v2.6' // use graph api version 2.5
+            });
+            FB.getLoginStatus(handleSessionResponse);
+
+        };
+
+        // Load the SDK asynchronously
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.7";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        // Here we run a very simple test of the Graph API after login is
+        // successful.  See statusChangeCallback() for when this call is made.
+        function testAPI() {
+                 window.top.location.href = "../analysis_page/index.html";
+        }
+
+        function handleSessionResponse(response) {
+            if (response.status == 'connected') {
+                FB.logout(function(response) {
+                    console.log(response);
+                });
+            }
+        }
+    </script>
+
+    <div class="container" style="back">
+
+        <header style="text-align: center;">
+            <!--<a href="../analysis_yn_page/index.html" class="button scrolly" >TESTING_SIMPLE</a>-->
+        </header>
+
+        <footer>
+        </footer>
+    </div>
+
+    <div id="myModal" class="reveal-modal">
+        <h1 style="text-align:center">使用Facebook帳號登入<br>(將會取得你按讚過的粉專資訊進行分析)</h1>
+        <div style="text-align:center">
+        <a id=test href="../analysis_page/index.html" class="button scrolly">不登入</a>
+        <a id=test onclick="fb_login()" class="button scrolly">登入</a>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+    </div>
+</body>
+
+</html>
